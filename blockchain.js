@@ -28,7 +28,7 @@ class Block {
 
     mineBlock(difficulty) {
         while (
-            this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0")
+            this.hash.substring(0, difficulty) !== Array(difficulty + 1).join("0") // find a hash with leading zeros
         ) {
             this.nonce++;
             this.hash = this.calculateHash();
@@ -41,8 +41,8 @@ class Block {
 class Blockchain {
     constructor() {
         this.chain = [this.createGenesisBlock()];
-        this.difficulty = 2;
-        this.maximumTransactions = 4;
+        this.difficulty = 2; // number of leading zeros in hash
+        this.maximumTransactions = 4; // number of transactions per block
         this.pendingTransactions = [];
     }
 
